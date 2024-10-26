@@ -1,14 +1,41 @@
 @import '/CSS/colors';
+@import '/CSS/fonts';
 
 .button-container{
-display: flex;
+  display: flex;
   flex-direction: row;
-  background-color: map-get($colors, my-red) ;
+  background-color: map-get($colors, red) ;
+  width: 160px;
+  height: 54px;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 10px;
+  align-items: center;
 }
 .button-icon{
-width: 40px;
+  width: 40px;
   height: 40px;
 }
 .button-label{
+  font-family: map-get($fonts, $font-family);
+  font-size: map-get($fonts, font-sizes-small);
+  font-weight: map-get($fonts, bold);
+}
 
+@media (max-width: 480px) {
+  .button-container{
+    width: 95px;
+    height: 35px;
+    padding: 2px;
+    border-radius: 20px;
+    margin: 5px;
+  }
+  .button-icon{
+    width: 35px;
+    height: 35px;
+  }
+  .button-label{
+    font-family: map-get($fonts, $font-family);
+    font-size: map-get($fonts, font-sizes-very-small);
+  }
 }

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../CSS/Components/add-to-cart-button.scss">
+<link rel="stylesheet" href="../CSS/Components/add-to-cart-button.css">
 <?php
 function generateAddToCartButton() {
     ?>
