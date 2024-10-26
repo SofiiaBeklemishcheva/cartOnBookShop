@@ -1,0 +1,14 @@
+@import '/CSS/colors';
+
+.button-container{
+display: flex;
+  flex-direction: row;
+  background-color: map-get($colors, my-red) ;
+}
+.button-icon{
+width: 40px;
+  height: 40px;
+}
+.button-label{
+
+}
