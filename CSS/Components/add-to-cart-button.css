@@ -1,0 +1,40 @@
+.button-container{
+    display: flex;
+    flex-direction: row;
+    background-color: #E70F0E ;
+    width: 160px;
+    height: 54px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.button-icon{
+    width: 40px;
+    height: 40px;
+}
+.button-label{
+    font-family: Inknut Antiqua, serif;
+    font-size: 12px;
+    font-weight: 700;
+    color:#E1DECC;
+}
+.button-container:hover{
+    background-color: #CA1211;
+}
+
+@media (max-width: 480px) {
+    .button-container{
+        width: 95px;
+        height: 35px;
+        padding: 2px;
+        border-radius: 20px;
+    }
+    .button-icon{
+        width: 35px;
+        height: 35px;
+    }
+    .button-label{
+        font-size: 8px;
+    }
+}

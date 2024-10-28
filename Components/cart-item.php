@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../CSS/Components/product-tile.scss">
+<link rel="stylesheet" href="../CSS/Components/cart-item.css">
 
 <?php
 function generateCartItem($img,
@@ -7,21 +7,22 @@ $price,
 $name,
 $author,
 $publisher,
-$genre) {
+$genre,
+$id) {
     ?>
     <div class="cart-item-container">
         <div class = "item-top-container">
-        <img class="item-img" src="<?= $img ?>" alt="<?= $label ?>"/>
-        <div class="iten-price-container">
-        <p class = "item-price"><?= $price ?></p>
-        <p class = "item-label">Cena z VAT 23%</p>
-        <p class = "item-price-with-tax"><?= $price ?> x 1</p>
-        <?php
-        include './Components/amount-in-cart-particular-item.php';
-        $amount = 2;
-        generateCartItemChangeAmount($amount);
-        ?>
-        </div>
+        <img class="book-img" src="<?= $img ?>" alt="<?= $label ?>"/>
+                <div class="item-price-container">
+                <p class = "item-price"><?= $price ?> zł.</p>
+                <p class = "item-label">Cena z VAT 23%</p>
+                <p class = "item-price-with-tax"><?= $price ?> zł. x 1</p>
+                <?php
+                include_once './Components/amoun-in-cart-paticular-item.php';
+                $amount = 2;
+                generateCartItemChangeAmount($id);
+                ?>
+                </div>
         </div>
         <div class = "item-description-container">
         <p class = "item-description"><?= $name?></p>

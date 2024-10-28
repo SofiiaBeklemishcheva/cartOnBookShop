@@ -1,0 +1,53 @@
+.product-tile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: 245px;
+    height: 500px;
+    background-color: #E1DECC;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+.product-tile-img{
+    width: 205px;
+    height: 240px;
+}
+
+.product-tile-label {
+    display: flex;
+    text-align: center;
+    color: #010101;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.product-tile-price {
+    color: #010101;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .product-tile-container {
+        width: 150px;
+        height: 270px;
+    }
+    .product-tile-img{
+        width: 125px;
+        height: 160px;
+    }
+
+    .product-tile-label {
+        font-size: 14px;
+    }
+
+    .product-tile-price {
+        font-family: Inknut Antiqua, serif;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}

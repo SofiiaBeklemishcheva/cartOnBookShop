@@ -1,0 +1,19 @@
+.order-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.order-button{
+    cursor: pointer;
+    width: 300px;
+    height: 60px;
+    border-radius: 20px;
+    border: none;
+    background-color: #E70F0E;
+    color: #E1DECC;
+    font-size: 20px;
+    font-weight: bold;
+}
+.order-button:hover{
+    background-color: #CA1211;
+}

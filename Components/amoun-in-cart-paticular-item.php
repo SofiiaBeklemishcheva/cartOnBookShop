@@ -1,20 +1,26 @@
-<link rel="stylesheet" href="../CSS/Components/product-tile.scss">
+<link rel="stylesheet" href="../CSS/Components/amoun-in-cart-paticular-item.css">
 
 <?php
-function generateCartItemChangeAmount($amount) {
+function generateCartItemChangeAmount($id) {
+    ob_start();
     ?>
     <div class="amount-counting-component-container">
-        <button class = "decrease">
-            <img class="item-img" src="" alt="Dodaj"/>
+        <button class="increase" onclick="increaseAmount('<?= $id;?>', 10)">
+            <img class="item-img" src="/Universal/plus.png" alt="Dodaj"/>
         </button>
 
-        <p class = "amount-of-items-label"><?= $amount ?></p>
+        <input type="number" class="amount-of-items-label" id="amount-display-<?= $id;?>" value="1"/>
 
-        <button class = "increase">
-            <img class="item-img" src="" alt="Odejmij"/>
+        <button class="decrease" onclick="decreaseAmount('<?= $id;?>')">
+            <img class="item-img" src="/Universal/minus.png" alt="Odejmij"/>
         </button>
-        
     </div>
     <?php
+    return ob_get_clean();
+}
+
+if (isset($_GET['id'])) {
+    echo generateCartItemChangeAmount($_GET['id']);
 }
 ?>
+

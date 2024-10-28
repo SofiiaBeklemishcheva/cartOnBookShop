@@ -1,0 +1,13 @@
+.body-container{
+    background-color: #E1DECC;
+    margin: 0;
+}
+.page-content-container{
+    display: flex;
+    justify-content: center;
+}
+.product-tiles-container{
+    width: 1090px;
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,22 @@
+html{
+    --white: #E1DECC;
+    --red: #E70F0E;
+    --gray: #474145;
+    --black: #010101;
+    --dark-red: #CA1211;
+    --fontSizeVerySmall: 8px;
+    --fontSizeSmall: 12px;
+    --fontSizeMedium: 14px;
+    --fontSizeLarge: 16px;
+    --fontSizeExtraLarge: 20px;
+    --fontWeightNormal:400;
+    --fontWeightSemiBold:600;
+    --fontWeightBold:700;
+}
+body{
+    background-color: #E1DECC;
+}
+*{
+   font-family: 'Inknut Antiqua';
+}
+
