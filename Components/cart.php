@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="../CSS/Components/cart.css">
+<link rel="stylesheet" href="CSS/Components/cart.css">
 
 <?php
 function generateCart($cartItems, $itemsInCart) {

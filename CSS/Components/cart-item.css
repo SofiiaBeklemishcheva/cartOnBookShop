@@ -38,3 +38,28 @@
 .item-description{
     margin: 0;
 }
+.delete-container{
+    display: flex;
+    justify-content: flex-end ;
+}
+.delete-button{
+    display: flex;
+    background-color: #E1DECC;
+    cursor: pointer;
+    border: none;
+    flex-direction: row-reverse;
+}
+.delete-icon{
+    width: 20px;
+    height: 20px;
+}
+.amount-button{
+    background-color: #E1DECC;
+    cursor: pointer;
+    border: none;
+}
+.amount-input{
+    width: 30px;
+    background-color: #E1DECC;
+    border: none;
+}

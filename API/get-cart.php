@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-$product = null; // Zainicjalizuj zmienną
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Zbieranie danych produktu z POST
     $product = [
         'id' => $_POST['product_id'],
         'label' => $_POST['product_label'],
@@ -16,7 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'amount' => 1
     ];
 
-    // Dodaj produkt do koszyka
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+
     $found = false;
     foreach ($_SESSION['cart'] as &$item) {
         if ($item['id'] === $product['id']) {
@@ -31,12 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo json_encode(['status' => 'success']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Sprawdzenie, czy koszyk jest zainicjowany
     if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = []; // Zainicjalizuj koszyk, jeśli nie istnieje
+        $_SESSION['cart'] = [];
     }
 
-    // Tutaj możesz np. zwrócić zawartość koszyka
     echo json_encode($_SESSION['cart']);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Nieprawidłowe dane.']);

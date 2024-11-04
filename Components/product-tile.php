@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="../CSS/Components/product-tile.css">
-<link rel="stylesheet" href="../CSS/globals.css">
+<link rel="stylesheet" href="CSS/Components/product-tile.css">
+<link rel="stylesheet" href="CSS/globals.css">
 
 <?php
 function generateProductTile($label, $authorName, $price, $img, $id, $genre, $stock) {
@@ -10,7 +10,7 @@ function generateProductTile($label, $authorName, $price, $img, $id, $genre, $st
         <p class="product-tile-author"><?= htmlspecialchars($authorName) ?></p>
         <p class="product-tile-price"><?= htmlspecialchars($price) ?> zł</p>
 
-        <form method="post" action="/API/post-product-to-cart.php">
+        <form method="post" action="API/post-product-to-cart.php">
             <input type="hidden" name="product_id" value="<?= htmlspecialchars($id) ?>">
             <input type="hidden" name="product_label" value="<?= htmlspecialchars($label) ?>">
             <input type="hidden" name="product_author" value="<?= htmlspecialchars($authorName) ?>">
@@ -20,8 +20,7 @@ function generateProductTile($label, $authorName, $price, $img, $id, $genre, $st
             <input type="hidden" name="product_stock" value="<?= htmlspecialchars($stock) ?>">
 
             <?php
-            include_once './Components/add-to-cart-button.php';
-            // Wywołanie przycisku z odpowiednimi parametrami
+            include_once 'Components/add-to-cart-button.php';
             generateAddToCartButton($id, $label, $authorName, $price, $img, $genre, $stock);
             ?>
         </form>

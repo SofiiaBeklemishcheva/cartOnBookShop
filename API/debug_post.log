@@ -1,0 +1,451 @@
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 33
+    [product_label] => Lśnienie
+    [product_author] => Stephen King
+    [product_price] => 100
+    [product_image] => Universal/lsnienie-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 5
+    [product_name] => Lśnienie
+)
+Array
+(
+    [product_id] => 33
+    [product_label] => Lśnienie
+    [product_author] => Stephen King
+    [product_price] => 100
+    [product_image] => Universal/lsnienie-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 5
+    [product_name] => Lśnienie
+)
+Array
+(
+    [product_id] => 39
+    [product_label] => Zabójstwo Rogera Ackroyda
+    [product_author] => Agatha Christie
+    [product_price] => 120
+    [product_image] => Universal/zabojstwo-rogera-ackroyda-agatha-christie.jpg
+    [product_genre] => Kryminał
+    [product_stock] => 14
+    [product_name] => Zabójstwo Rogera Ackroyda
+)
+Array
+(
+    [product_id] => 39
+    [product_label] => Zabójstwo Rogera Ackroyda
+    [product_author] => Agatha Christie
+    [product_price] => 120
+    [product_image] => Universal/zabojstwo-rogera-ackroyda-agatha-christie.jpg
+    [product_genre] => Kryminał
+    [product_stock] => 14
+    [product_name] => Zabójstwo Rogera Ackroyda
+)
+Array
+(
+    [product_id] => 38
+    [product_label] => Dziesięciu Murzynków
+    [product_author] => Agatha Christie
+    [product_price] => 83
+    [product_image] => Universal/dziesieciu-murzynkow-agatha-christie.jpg
+    [product_genre] => Thriller
+    [product_stock] => 9
+    [product_name] => Dziesięciu Murzynków
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 33
+    [product_label] => Lśnienie
+    [product_author] => Stephen King
+    [product_price] => 100
+    [product_image] => Universal/lsnienie-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 5
+    [product_name] => Lśnienie
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 32
+    [product_label] => To
+    [product_author] => Stephen King
+    [product_price] => 60
+    [product_image] => Universal/to-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 20
+    [product_name] => To
+)
+Array
+(
+    [product_id] => 33
+    [product_label] => Lśnienie
+    [product_author] => Stephen King
+    [product_price] => 100
+    [product_image] => Universal/lsnienie-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 5
+    [product_name] => Lśnienie
+)
+Array
+(
+    [product_id] => 34
+    [product_label] => Misery
+    [product_author] => Stephen King
+    [product_price] => 20
+    [product_image] => Universal/misery-stephen-king.jpg
+    [product_genre] => Thriller psychologiczny
+    [product_stock] => 2
+    [product_name] => Misery
+)
+Array
+(
+    [product_id] => 35
+    [product_label] => Miasteczko Salem
+    [product_author] => Stephen King
+    [product_price] => 40
+    [product_image] => Universal/miasteczko-salem-stephen-king.jpg
+    [product_genre] => Horror
+    [product_stock] => 10
+    [product_name] => Miasteczko Salem
+)
+Array
+(
+    [product_id] => 38
+    [product_label] => Dziesięciu Murzynków
+    [product_author] => Agatha Christie
+    [product_price] => 83
+    [product_image] => Universal/dziesieciu-murzynkow-agatha-christie.jpg
+    [product_genre] => Thriller
+    [product_stock] => 9
+    [product_name] => Dziesięciu Murzynków
+)
+Array
+(
+    [product_id] => 37
+    [product_label] => Śmierć na Nilu
+    [product_author] => Agatha Christie
+    [product_price] => 79
+    [product_image] => Universal/smierc-na-nilu-agatha-christie.jpg
+    [product_genre] => Kryminał
+    [product_stock] => 7
+    [product_name] => Śmierć na Nilu
+)
+Array
+(
+    [product_id] => 37
+    [product_label] => Śmierć na Nilu
+    [product_author] => Agatha Christie
+    [product_price] => 79
+    [product_image] => Universal/smierc-na-nilu-agatha-christie.jpg
+    [product_genre] => Kryminał
+    [product_stock] => 7
+    [product_name] => Śmierć na Nilu
+)

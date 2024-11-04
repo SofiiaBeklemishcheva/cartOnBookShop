@@ -1,0 +1,30 @@
+Array
+(
+    [0] => Array
+        (
+            [id] => 35
+            [label] => Miasteczko Salem
+            [author] => Stephen King
+            [price] => 40
+            [image] => Universal/miasteczko-salem-stephen-king.jpg
+            [genre] => Horror
+            [stock] => 10
+            [amount] => 1
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 35
+            [label] => Miasteczko Salem
+            [author] => Stephen King
+            [price] => 40
+            [image] => Universal/miasteczko-salem-stephen-king.jpg
+            [genre] => Horror
+            [stock] => 10
+            [amount] => 2
+        )
+
+)

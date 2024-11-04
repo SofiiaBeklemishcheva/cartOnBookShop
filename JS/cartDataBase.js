@@ -1,234 +1,273 @@
-let product = []; // Tablica przechowująca produkty w koszyku
+let product = [];
 
-function updateCartValue() {
-    let cartValue = product.reduce((acc, obj) => {
-        const totalItemPrice = parseInt(obj.price) * parseInt(obj.amount);
-        console.log(`Produkt: ${obj.name}, Ilość: ${obj.amount}, Cena: ${obj.price}, Łączna cena: ${totalItemPrice}`);
-        return acc + totalItemPrice;
-    }, 0);
-
-    let cartValueContainer = document.querySelector(".summary-container");
-
-    if (cartValueContainer) {
-        cartValueContainer.textContent = "Wartość koszyka: " + cartValue + " zł.";
-    }
+if (typeof cartProductsData !== 'undefined') {
+    product = cartProductsData;
 }
 
+function loadCart() {
+    const cartContainer = document.getElementById("mini-cart");
+    cartContainer.innerHTML = '';
 
-function updateProductAmount(productId, newAmount) {
-    const productIndex = product.findIndex(item => item.id === productId);
-    if (productIndex !== -1) {
-        product[productIndex].amount = newAmount; // Zaktualizuj ilość produktu
-    }
+    fetch('API/get-cart.php')
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(cartItems => {
+            console.log('Otrzymane dane koszyka:', cartItems);
+            if (typeof cartItems === 'object' && cartItems !== null) {
+                cartItems = Object.values(cartItems);
+            } else {
+                console.error('Otrzymane dane nie są obiektem:', cartItems);
+                return;
+            }
+            cartItems.forEach(item => {
+                const existingProductIndex = product.findIndex(prod => prod.id === item.id);
+                if (existingProductIndex !== -1) {
+                    product[existingProductIndex].amount = item.amount;
+                } else {
+                    product.push({
+                        id: item.id,
+                        label: item.label,
+                        author: item.author,
+                        price: item.price,
+                        img: item.image,
+                        genre: item.genre,
+                        amount: item.amount
+                    });
+                }
+            });
+            setProductList();
+        })
+        .catch(error => console.error('Error fetching cart:', error));
+}
+
+function renderCartSummary(container, totalAmount) {
+    const summaryContainer = document.createElement("div");
+    summaryContainer.classList.add("cart-summary");
+
+    const totalAmountElement = document.createElement("p");
+    totalAmountElement.id = "total-amount";
+    totalAmountElement.textContent = `Wartość koszyka: ${totalAmount.toFixed(2)} PLN`;
+    summaryContainer.appendChild(totalAmountElement);
+
+    const orderButtonContainer = document.createElement("div");
+    orderButtonContainer.classList.add("order-button-container");
+
+    const orderButton = document.createElement("button");
+    orderButton.textContent = "ZAMAWIAM";
+    orderButton.classList.add("order-button");
+
+    orderButton.addEventListener("click", function() {
+        fetch('/zadanie-rekrutacyjne-omnicorp/API/submit-order.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(product),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert("Zamówienie zostało złożone!");
+                    product = [];
+                    setProductList();
+                } else {
+                    console.error('Błąd podczas składania zamówienia:', data.message);
+                }
+            })
+            .catch(error => console.error('Błąd:', error));
+    });
+
+    orderButtonContainer.appendChild(orderButton);
+    summaryContainer.appendChild(orderButtonContainer);
+    container.appendChild(summaryContainer);
 }
 
 function setProductList() {
     const root = document.getElementById("mini-cart");
-    root.innerHTML = ''; // Wyczyszczenie koszyka przed dodaniem nowych elementów
-    let totalItems = product.length;
+    root.innerHTML = '';
 
+    const totalItems = product.length;
     const cartCountElement = document.createElement("p");
     cartCountElement.id = "cart-count";
-    cartCountElement.textContent = `Twój koszyk: ` + totalItems;
+    cartCountElement.textContent = `Twój koszyk: ${totalItems}`;
     root.appendChild(cartCountElement);
 
+    let totalAmount = 0;
     product.forEach(element => {
-        let cartContainer = document.createElement("div");
+        const cartContainer = document.createElement("div");
         cartContainer.classList.add("cart-item-container");
 
-        let topContainer = document.createElement("div");
+        const topContainer = document.createElement("div");
         topContainer.classList.add("item-top-container");
 
-        let bookImg = document.createElement("img");
+        const bookImg = document.createElement("img");
         bookImg.classList.add("book-img");
         bookImg.src = element.img;
 
-        let itemPriceContainer = document.createElement("div");
+        const itemPriceContainer = document.createElement("div");
         itemPriceContainer.classList.add("item-price-container");
 
-        let itemPrice = document.createElement("p");
-        itemPrice.classList.add("item-price");
-        itemPrice.textContent = element.price + " zł.";
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-button");
 
-        let itemLabel = document.createElement("p");
+        const deleteIcon = document.createElement("img");
+        deleteIcon.src = "Universal/delete.png";
+        deleteIcon.alt = "Usuń";
+        deleteIcon.classList.add("delete-icon");
+
+        deleteButton.appendChild(deleteIcon);
+        deleteButton.addEventListener('click', () => removeFromCart(element.id));
+        itemPriceContainer.appendChild(deleteButton);
+
+        const itemPrice = document.createElement("p");
+        itemPrice.classList.add("item-price");
+        itemPrice.textContent = `${element.price} zł.`;
+
+        const itemLabel = document.createElement("p");
         itemLabel.classList.add("item-label");
         itemLabel.textContent = element.label;
 
-        let itemPriceWithTax = document.createElement("p");
+        const itemPriceWithTax = document.createElement("p");
         itemPriceWithTax.classList.add("item-price-with-tax");
-        itemPriceWithTax.textContent = "Cena z VAT 23%: " + element.price + " zł.";
-
-        let descriptionContainer = document.createElement("div");
-        descriptionContainer.classList.add("item-description-container");
-
-        let itemDescriptionNameContainer = document.createElement("p");
-        itemDescriptionNameContainer.classList.add("item-description");
-        itemDescriptionNameContainer.textContent = element.name;
-
-        let itemDescriptionAuthorContainer = document.createElement("p");
-        itemDescriptionAuthorContainer.classList.add("item-description");
-        itemDescriptionAuthorContainer.textContent = element.author;
-
-        let itemDescriptionPublisherContainer = document.createElement("p");
-        itemDescriptionPublisherContainer.classList.add("item-description");
-        itemDescriptionPublisherContainer.textContent = element.publisher;
-
-        let itemDescriptionGenreContainer = document.createElement("p");
-        itemDescriptionGenreContainer.classList.add("item-description");
-        itemDescriptionGenreContainer.textContent = element.genre;
-
-        fetch(`./Components/amoun-in-cart-paticular-item.php?id=${element.id}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(html => {
-                // Dodajemy pobrany HTML z przyciskami do kontenera
-                topContainer.innerHTML += html;
-
-                // Po dodaniu HTML wyszukujemy przyciski i dodajemy `EventListener`
-                const increaseButton = topContainer.querySelector(`.increase`);
-                const decreaseButton = topContainer.querySelector(`.decrease`);
-                const amountInput = topContainer.querySelector(`#amount-display-${element.id}`);
-
-                // Event listener dla zwiększenia ilości
-                if (increaseButton) {
-                    increaseButton.addEventListener("click", () => {
-                        updateProductAmount(element.id, newAmount);
-                        updateCartValue();
-                    });
-                }
-
-                // Event listener dla zmniejszenia ilości
-                if (decreaseButton) {
-                    decreaseButton.addEventListener("click", () => {
-                        updateProductAmount(element.id, newAmount);
-                        updateCartValue();
-                    });
-                }
-
-                // Event listener dla zmiany wartości w `amountInput`
-                if (amountInput) {
-                    amountInput.addEventListener("input", () => {
-                        const newAmount = Math.max(1, parseInt(amountInput.value)) || 1; // Minimalna ilość to 1
-                        updateProductAmount(element.id, newAmount);
-                        updateCartValue();
-                    });
-                }
-            })
-            .catch(error => console.error('Error:', error));
+        itemPriceWithTax.textContent = `Cena z VAT 23%: ${element.price} zł.`;
 
         itemPriceContainer.appendChild(itemPrice);
         itemPriceContainer.appendChild(itemLabel);
         itemPriceContainer.appendChild(itemPriceWithTax);
 
+        const controlsContainer = document.createElement("div");
+        controlsContainer.classList.add("controls-container");
+
+        const decreaseButton = document.createElement("button");
+        decreaseButton.textContent = "-";
+        decreaseButton.classList.add("amount-button");
+        decreaseButton.addEventListener('click', () => decreaseAmount(element.id));
+
+        const amountInput = document.createElement("input");
+        amountInput.type = "number";
+        amountInput.id = "amount-display-" + element.id;
+        amountInput.value = element.amount;
+        amountInput.classList.add("amount-input");
+        amountInput.min = "1";
+        amountInput.readOnly = true;
+
+        const increaseButton = document.createElement("button");
+        increaseButton.textContent = "+";
+        increaseButton.classList.add("amount-button");
+        increaseButton.addEventListener('click', () => increaseAmount(element.id));
+
+        controlsContainer.appendChild(decreaseButton);
+        controlsContainer.appendChild(amountInput);
+        controlsContainer.appendChild(increaseButton);
+        itemPriceContainer.appendChild(controlsContainer);
+
+        const descriptionContainer = document.createElement("div");
+        descriptionContainer.classList.add("item-description-container");
+
+        const itemDescriptionFields = [
+            { className: "item-description", content: element.name },
+            { className: "item-description", content: element.author },
+            { className: "item-description", content: element.publisher },
+            { className: "item-description", content: element.genre }
+        ];
+
+        itemDescriptionFields.forEach(field => {
+            const itemDescriptionContainer = document.createElement("p");
+            itemDescriptionContainer.classList.add(field.className);
+            itemDescriptionContainer.textContent = field.content;
+            descriptionContainer.appendChild(itemDescriptionContainer);
+        });
+
+        const itemTotalPrice = parseFloat(element.price) * parseInt(element.amount);
+        totalAmount += itemTotalPrice;
+
         topContainer.appendChild(bookImg);
         topContainer.appendChild(itemPriceContainer);
-
-        descriptionContainer.appendChild(itemDescriptionAuthorContainer);
-        descriptionContainer.appendChild(itemDescriptionPublisherContainer);
-        descriptionContainer.appendChild(itemDescriptionGenreContainer);
-        descriptionContainer.appendChild(itemDescriptionNameContainer);
-
         cartContainer.appendChild(topContainer);
         cartContainer.appendChild(descriptionContainer);
         root.appendChild(cartContainer);
     });
 
-    renderCartSummary(root); // Renderowanie podsumowania koszyka
-    renderOrderButton(root); // Renderowanie przycisku zamawiania
+    renderCartSummary(root, totalAmount);
 }
 
-function renderCartSummary(root) {
-    let cartValue = product.reduce((acc, obj) => acc + (parseInt(obj.price) * parseInt(obj.amount)), 0);
-
-    let cartValueContainer = document.createElement("p");
-    cartValueContainer.classList.add("summary-container");
-    cartValueContainer.textContent = "Wartość koszyka: " + cartValue + " zł.";
-    root.appendChild(cartValueContainer);
-}
-
-function renderOrderButton(root) {
-    let orderButtonContainer = document.createElement("div");
-    orderButtonContainer.classList.add("order-button-container");
-
-    let orderButton = document.createElement("input");
-    orderButton.classList.add("order-button");
-    orderButton.type = "submit";
-    orderButton.value = "ZAMAWIAM";
-
-    orderButtonContainer.appendChild(orderButton);
-    root.appendChild(orderButtonContainer);
-}
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll('.button-container'); // Zmienna musi być zgodna z klasą kontenera przycisków
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            const form = this.closest('form');
-            if (form) {
-                const formData = new FormData(form);
-                fetch('/API/post-product-to-cart.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.status === 'success') {
-                            // Dodaj nowy produkt do lokalnej tablicy
-                            const newProduct = {
-                                id: data.product_id,
-                                label: data.product_label,
-                                author: data.product_author,
-                                price: data.product_price,
-                                img: data.product_image,
-                                genre: data.product_genre,
-                                amount: 1 // Domyślna ilość
-                            };
-
-                            // Sprawdź, czy produkt już istnieje w tablicy
-                            const existingProductIndex = product.findIndex(item => item.id === newProduct.id);
-                            if (existingProductIndex !== -1) {
-                                product[existingProductIndex].amount += 1; // Zwiększ ilość
-                            } else {
-                                product.push(newProduct); // Dodaj nowy produkt
-                            }
-
-                            // Zaktualizuj widok koszyka
-                            setProductList();
-                            updateCartValue();
-                        } else {
-                            console.error('Błąd:', data.message);
-                        }
-                    })
-                    .catch(error => console.error('Wystąpił błąd:', error));
+function addToCart(productId, label, author, price, image, genre, amount = 1) {
+    fetch('API/post-product-to-cart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `add_to_cart=true&product_id=${productId}&label=${encodeURIComponent(label)}&author=${encodeURIComponent(author)}&price=${price}&image=${encodeURIComponent(image)}&genre=${encodeURIComponent(genre)}&amount=${amount}`
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log(data.message);
+                loadCart();
+            } else {
+                console.error('Błąd:', data.message);
             }
-        });
-    });
-});
-
-
-function loadCart() {
-    const cartContainer = document.getElementById("mini-cart");
-    cartContainer.innerHTML = ''; // Wyczyść koszyk
-
-    fetch('/API/get-cart.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
         })
-
-        .catch(error => console.error('Error fetching cart:', error));
+        .catch(error => console.error('Błąd:', error));
 }
 
+function decreaseAmount(productId) {
+    const productToDecrease = product.find(prod => prod.id === productId);
+    if (productToDecrease && productToDecrease.amount > 1) {
+        productToDecrease.amount--;
+        updateCart(productToDecrease);
+    }
+}
 
+function increaseAmount(productId) {
+    const productToIncrease = product.find(prod => prod.id === productId);
+    if (productToIncrease) {
+        productToIncrease.amount++;
+        updateCart(productToIncrease);
+    }
+}
 
+function updateCart(productToUpdate) {
+    fetch('API/post-product-to-cart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `update_cart=true&product_id=${productToUpdate.id}&amount=${productToUpdate.amount}`
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log("Koszyk zaktualizowany");
+                loadCart();
+            } else {
+                console.error('Błąd:', data.message);
+            }
+        })
+        .catch(error => console.error('Błąd:', error));
+}
+
+function removeFromCart(productId) {
+    fetch('API/post-product-to-cart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `remove_cart=true&product_id=${productId}`
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                console.log("Produkt usunięty z koszyka");
+                product = product.filter(prod => prod.id !== productId);
+                setProductList();
+            } else {
+                console.error('Błąd:', data.message);
+            }
+        })
+        .catch(error => console.error('Błąd:', error));
+}
+
+document.addEventListener('DOMContentLoaded', loadCart);

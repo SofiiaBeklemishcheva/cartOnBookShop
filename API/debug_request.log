@@ -1,0 +1,108 @@
+Array
+(
+    [MIBDIRS] => C:/xampp/php/extras/mibs
+    [MYSQL_HOME] => \xampp\mysql\bin
+    [OPENSSL_CONF] => C:/xampp/apache/bin/openssl.cnf
+    [PHP_PEAR_SYSCONF_DIR] => \xampp\php
+    [PHPRC] => \xampp\php
+    [TMP] => \xampp\tmp
+    [HTTP_HOST] => localhost
+    [HTTP_CONNECTION] => keep-alive
+    [CONTENT_LENGTH] => 1684
+    [HTTP_SEC_CH_UA_PLATFORM] => "Windows"
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+    [HTTP_SEC_CH_UA] => "Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"
+    [CONTENT_TYPE] => multipart/form-data; boundary=----WebKitFormBoundaryKHXf2t4mYrtz5AOj
+    [HTTP_SEC_CH_UA_MOBILE] => ?0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ORIGIN] => http://localhost
+    [HTTP_SEC_FETCH_SITE] => same-origin
+    [HTTP_SEC_FETCH_MODE] => cors
+    [HTTP_SEC_FETCH_DEST] => empty
+    [HTTP_REFERER] => http://localhost/zadanie-rekrutacyjne-omnicorp/
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, br, zstd
+    [HTTP_ACCEPT_LANGUAGE] => ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,pl;q=0.6
+    [HTTP_COOKIE] => wp-settings-time-1=1711408739; Phpstorm-17ba5891=923d8dcd-5034-4c2d-b0ba-5baaa24027a5; Phpstorm-17ba5c52=730b0e60-ed6f-48ca-ab5d-f9d41e605c38; PHPSESSID=k226utfko0iuqadsdjtl65ev54
+    [PATH] => C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;С:\php;C:\Users\Lenovo 15IHU682K100Q\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Programs\Python\Python312\;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Microsoft\WindowsApps;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.2\bin;;C:\Users\Lenovo 15IHU682K100Q\AppData\Roaming\npm;C:\Users\Lenovo 15IHU682K100Q\AppData\Roaming\nvm;C:\Program Files\nodejs
+    [SystemRoot] => C:\WINDOWS
+    [COMSPEC] => C:\WINDOWS\system32\cmd.exe
+    [PATHEXT] => .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    [WINDIR] => C:\WINDOWS
+    [SERVER_SIGNATURE] => <address>Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 Server at localhost Port 80</address>
+
+    [SERVER_SOFTWARE] => Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12
+    [SERVER_NAME] => localhost
+    [SERVER_ADDR] => ::1
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => ::1
+    [DOCUMENT_ROOT] => C:/xampp/htdocs
+    [REQUEST_SCHEME] => http
+    [CONTEXT_PREFIX] => 
+    [CONTEXT_DOCUMENT_ROOT] => C:/xampp/htdocs
+    [SERVER_ADMIN] => postmaster@localhost
+    [SCRIPT_FILENAME] => C:/xampp/htdocs/zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [REMOTE_PORT] => 58805
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [REQUEST_METHOD] => POST
+    [QUERY_STRING] => 
+    [REQUEST_URI] => /zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [SCRIPT_NAME] => /zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [PHP_SELF] => /zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [REQUEST_TIME_FLOAT] => 1730244696.7475
+    [REQUEST_TIME] => 1730244696
+)
+Array
+(
+    [MIBDIRS] => C:/xampp/php/extras/mibs
+    [MYSQL_HOME] => \xampp\mysql\bin
+    [OPENSSL_CONF] => C:/xampp/apache/bin/openssl.cnf
+    [PHP_PEAR_SYSCONF_DIR] => \xampp\php
+    [PHPRC] => \xampp\php
+    [TMP] => \xampp\tmp
+    [HTTP_HOST] => localhost
+    [HTTP_CONNECTION] => keep-alive
+    [CONTENT_LENGTH] => 1684
+    [HTTP_SEC_CH_UA_PLATFORM] => "Windows"
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+    [HTTP_SEC_CH_UA] => "Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"
+    [CONTENT_TYPE] => multipart/form-data; boundary=----WebKitFormBoundarystXP2rrYkBFHVFQy
+    [HTTP_SEC_CH_UA_MOBILE] => ?0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ORIGIN] => http://localhost
+    [HTTP_SEC_FETCH_SITE] => same-origin
+    [HTTP_SEC_FETCH_MODE] => cors
+    [HTTP_SEC_FETCH_DEST] => empty
+    [HTTP_REFERER] => http://localhost/zadanie-rekrutacyjne-omnicorp/
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, br, zstd
+    [HTTP_ACCEPT_LANGUAGE] => ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,pl;q=0.6
+    [HTTP_COOKIE] => wp-settings-time-1=1711408739; Phpstorm-17ba5891=923d8dcd-5034-4c2d-b0ba-5baaa24027a5; Phpstorm-17ba5c52=730b0e60-ed6f-48ca-ab5d-f9d41e605c38; PHPSESSID=k226utfko0iuqadsdjtl65ev54
+    [PATH] => C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;С:\php;C:\Users\Lenovo 15IHU682K100Q\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Programs\Python\Python312\;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Microsoft\WindowsApps;C:\Users\Lenovo 15IHU682K100Q\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.2\bin;;C:\Users\Lenovo 15IHU682K100Q\AppData\Roaming\npm;C:\Users\Lenovo 15IHU682K100Q\AppData\Roaming\nvm;C:\Program Files\nodejs
+    [SystemRoot] => C:\WINDOWS
+    [COMSPEC] => C:\WINDOWS\system32\cmd.exe
+    [PATHEXT] => .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    [WINDIR] => C:\WINDOWS
+    [SERVER_SIGNATURE] => <address>Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 Server at localhost Port 80</address>
+
+    [SERVER_SOFTWARE] => Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12
+    [SERVER_NAME] => localhost
+    [SERVER_ADDR] => ::1
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => ::1
+    [DOCUMENT_ROOT] => C:/xampp/htdocs
+    [REQUEST_SCHEME] => http
+    [CONTEXT_PREFIX] => 
+    [CONTEXT_DOCUMENT_ROOT] => C:/xampp/htdocs
+    [SERVER_ADMIN] => postmaster@localhost
+    [SCRIPT_FILENAME] => C:/xampp/htdocs/zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [REMOTE_PORT] => 58804
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [REQUEST_METHOD] => POST
+    [QUERY_STRING] => 
+    [REQUEST_URI] => /zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [SCRIPT_NAME] => /zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [PHP_SELF] => /zadanie-rekrutacyjne-omnicorp/API/post-product-to-cart.php
+    [REQUEST_TIME_FLOAT] => 1730244700.5267
+    [REQUEST_TIME] => 1730244700
+)

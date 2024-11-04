@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../CSS/Components/cart-item.css">
+<link rel="stylesheet" href="CSS/Components/cart-item.css">
 
 <?php
 function generateCartItem($img,

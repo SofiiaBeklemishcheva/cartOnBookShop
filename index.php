@@ -1,16 +1,73 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if (isset($_POST['add_to_cart'])) {
+        $id = $_POST['product_id'];
+        $label = $_POST['product_label'];
+        $authorName = $_POST['product_author'];
+        $price = $_POST['product_price'];
+        $img = $_POST['product_image'];
+        $genre = $_POST['product_genre'];
+
+
+        $product = [
+            "id" => $id,
+            "label" => $label,
+            "author" => $authorName,
+            "price" => $price,
+            "img" => $img,
+            "genre" => $genre,
+            "amount" => 1
+        ];
+
+        $_SESSION['cart'][] = $product;
+
+        echo json_encode(['status' => 'success', 'message' => 'Produkt dodany do koszyka.']);
+        exit;
+    }
+
+    if (isset($_POST['remove_cart'])) {
+        $productIdToRemove = $_POST['product_id'];
+
+        $_SESSION['cart'] = array_filter($_SESSION['cart'], function($product) use ($productIdToRemove) {
+            return $product['id'] != $productIdToRemove;
+        });
+
+        echo json_encode(['status' => 'success', 'message' => 'Produkt został usunięty z koszyka.']);
+        exit;
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/Pages/index.css">
-    <link rel="stylesheet" href="./CSS/Components/cart-item.css">
-    <link rel="stylesheet" href="./CSS/Components/cart.css">
-    <link rel="stylesheet" href="./CSS/Components/order-button.css">
-    <link rel="stylesheet" href="./CSS/Components/amoun-in-cart-paticular-item.css">
-    <script src="/JS/cartDataBase.js" defer></script>
-    <?php session_start(); ?>
+    <title>Home</title>
+
+
+    <link rel="stylesheet" href="CSS/Layout/header.css?v=1.2">
+    <link rel="stylesheet" href="CSS/globals.css?v=1.2">
+    <link rel="stylesheet" href="CSS/Components/product-tile.css?v=1.2">
+    <link rel="stylesheet" href="CSS/Components/add-to-cart-button.css?v=1.2">
+    <link rel="stylesheet" href="CSS/Components/amoun-in-cart-paticular-item.css?v=1.2">
+    <link rel="stylesheet" href="CSS/Components/cart-item.css?v=1.3">
+
+    <link rel="stylesheet" href="CSS/Components/cart.css?v=1.2">
+    <link rel="stylesheet" href="CSS/Components/order-button.css?v=1.2">
+    <link rel="stylesheet" href="CSS/Pages/index.css?v=1.2">
+
+    <script src="JS/cartDataBase.js?v=2"></script>
+
 </head>
 <body class="body-container">
 
@@ -53,84 +110,44 @@ generateHeader();
 <script>
 
     document.addEventListener("DOMContentLoaded", function() {
+        loadCart();
         setProductList();
+
         const cartContainer = document.querySelector('.cart-container');
         const cartButton = document.querySelector('.header-button-img');
 
+        cartContainer.style.display = "none";
+
         cartButton.addEventListener('click', function() {
             if (cartContainer.style.display === "none" || !cartContainer.style.display) {
+
                 cartContainer.style.display = "block";
-                cartContainer.style.opacity = 0; // Ustawiamy opacity na 0 przed animacją
-                let fadeEffect = setInterval(function () {
-                    if (!cartContainer.style.opacity) {
-                        cartContainer.style.opacity = 0;
-                    }
-                    if (cartContainer.style.opacity < 1) {
+                cartContainer.style.opacity = 0;
+                let fadeInEffect = setInterval(function() {
+                    if (parseFloat(cartContainer.style.opacity) < 1) {
                         cartContainer.style.opacity = parseFloat(cartContainer.style.opacity) + 0.1;
                     } else {
-                        clearInterval(fadeEffect);
+                        clearInterval(fadeInEffect);
                     }
-                }, 50);
+                }, 30);
             } else {
-                // Animacja ukrywania
-                let fadeEffect = setInterval(function () {
-                    if (!cartContainer.style.opacity) {
-                        cartContainer.style.opacity = 1;
-                    }
-                    if (cartContainer.style.opacity > 0) {
+
+                let fadeOutEffect = setInterval(function() {
+                    if (parseFloat(cartContainer.style.opacity) > 0) {
                         cartContainer.style.opacity -= 0.1;
                     } else {
-                        clearInterval(fadeEffect);
-                        cartContainer.style.display = "none"; // Ukrywamy kontener
+                        clearInterval(fadeOutEffect);
+                        cartContainer.style.display = "none";
                     }
-                }, 50);
+                }, 30);
             }
         });
 
-    });
-
-
-
-    function updateProductAmount(id, amount) {
-        let productItem = product.find((item) => item.id === id);
-        if (productItem) {
-            productItem.amount = amount;
-        }
-    }
-
-    function increaseAmount(id, maxValue) {
-        let amountInput = document.getElementById("amount-display-" + id);
-        if (amountInput) {
-            let amount = parseInt(amountInput.value) || 0;
-            if (amount < maxValue) {
-                amount++;
-                amountInput.value = amount;
-                updateProductAmount(id, amount); // Uaktualnij ilość produktu
-                updateCartValue(); // Uaktualnij wartość koszyka
-            }
-        }
-    }
-
-    function decreaseAmount(id) {
-        let amountInput = document.getElementById("amount-display-" + id);
-        if (amountInput) {
-            let amount = parseInt(amountInput.value) || 0;
-            if (amount > 1) {
-                amount--;
-                amountInput.value = amount;
-                updateProductAmount(id, amount); // Uaktualnij ilość produktu
-                updateCartValue(); // Uaktualnij wartość koszyka
-            }
-        }
-    }
-
-
-    document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll('.button-container');
 
         buttons.forEach(button => {
             button.addEventListener('click', function (event) {
-                event.preventDefault(); // Zatrzymaj domyślne działanie formularza
+                event.preventDefault();
 
                 const form = this.closest('form');
                 if (form) {
@@ -147,8 +164,8 @@ generateHeader();
                         })
                         .then(data => {
                             if (data.status === 'success') {
-                                // Po dodaniu produktu do koszyka możesz go załadować
-                                loadCart(); // Funkcja, która zaktualizuje widok koszyka
+
+                                loadCart();
                             }
                         })
                         .catch(error => console.error('Wystąpił błąd:', error));
@@ -156,6 +173,7 @@ generateHeader();
             });
         });
     });
+
 
 
 </script>

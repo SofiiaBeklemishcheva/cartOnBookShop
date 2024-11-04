@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="../CSS/Components/order-button.css">
+<link rel="stylesheet" href="CSS/Components/order-button.css">
 
 <?php
 function generateOrderButton() {

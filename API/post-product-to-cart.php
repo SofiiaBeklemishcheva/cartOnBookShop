@@ -1,56 +1,90 @@
 <?php
-session_start(); // Upewnij się, że sesja jest uruchomiona
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sprawdź, czy dane zostały przesłane
-    if (isset($_POST['product_id'])) {
-        // Debug: Wyświetlenie zawartości $_POST
-        file_put_contents('debug_post.log', print_r($_POST, true), FILE_APPEND);
+use API\ConnectionController;
 
-        // Utworzenie tablicy produktu
-        $product = [
-            'id' => $_POST['product_id'],
-            'label' => $_POST['product_label'],
-            'author' => $_POST['product_author'],
-            'price' => $_POST['product_price'],
-            'image' => $_POST['product_image'],
-            'genre' => $_POST['product_genre'],
-            'stock' => $_POST['product_stock'],
-            'amount' => 1 // domyślna ilość
-        ];
+session_start();
 
-        // Sprawdź, czy koszyk już istnieje w sesji
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = []; // Zainicjalizuj jako pustą tablicę
-        }
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
 
-        // Dodaj produkt do koszyka w sesji
-        $found = false;
-        foreach ($_SESSION['cart'] as &$item) {
-            if (is_array($item) && isset($item['id']) && $item['id'] === $product['id']) {
-                $item['amount'] += 1; // Zwiększ ilość, jeśli produkt już istnieje
-                $found = true;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Adding a product to the cart
+    if (isset($_POST['add_to_cart'])) {
+        $productId = $_POST['product_id'];
+        $productLabel = $_POST['label'];
+        $productAuthor = $_POST['author'];
+        $productPrice = $_POST['price'];
+        $productImage = $_POST['image'];
+        $productGenre = $_POST['genre'];
+        $amount = isset($_POST['amount']) ? (int)$_POST['amount'] : 1;
+
+        $productExists = false;
+        foreach ($_SESSION['cart'] as &$product) {
+            if ($product['id'] == $productId) {
+                $product['amount'] += $amount;
+                $productExists = true;
                 break;
             }
         }
 
-        if (!$found) {
-            $_SESSION['cart'][] = $product; // Dodaj nowy produkt, jeśli nie znaleziono
+        if (!$productExists) {
+            $_SESSION['cart'][] = [
+                'id' => $productId,
+                'label' => $productLabel,
+                'author' => $productAuthor,
+                'price' => $productPrice,
+                'image' => $productImage,
+                'genre' => $productGenre,
+                'amount' => $amount
+            ];
         }
 
-        // Zwróć dane JSON dla JS
-        echo json_encode([
-            'status' => 'success',
-            'product_id' => $product['id'],
-            'product_image' => $product['image'],
-            'product_label' => $product['label'],
-            'product_price' => $product['price'],
-            'product_author' => $product['author'],
-            'product_genre' => $product['genre']
-        ]);
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Nieprawidłowe dane.']);
+        echo json_encode(['status' => 'success', 'message' => 'Product added to cart.']);
+        exit;
     }
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Nieprawidłowa metoda żądania.']);
+
+    if (isset($_POST['update_cart'])) {
+        $productId = $_POST['product_id'];
+        $newAmount = (int)$_POST['amount'];
+
+        foreach ($_SESSION['cart'] as &$product) {
+            if ($product['id'] == $productId) {
+                $product['amount'] = $newAmount;
+                break;
+            }
+        }
+
+        echo json_encode(['status' => 'success', 'message' => 'Cart updated.']);
+        exit;
+    }
+
+    if (isset($_POST['remove_cart'])) {
+        $productIdToRemove = $_POST['product_id'];
+
+        $_SESSION['cart'] = array_filter($_SESSION['cart'], function($product) use ($productIdToRemove) {
+            return $product['id'] != $productIdToRemove;
+        });
+
+        echo json_encode(['status' => 'success', 'message' => 'Product removed from cart.']);
+        exit;
+    }
 }
+
+require_once 'ConnectionController.php';
+$controller = new ConnectionController();
+
+if (!empty($_SESSION['cart'])) {
+    $orderData = array_map(function($product) {
+        return [
+            'id' => $product['id'],
+            'label' => $product['label'],
+            'price' => $product['price'],
+            'amount' => $product['amount']
+        ];
+    }, $_SESSION['cart']);
+
+    $controller->submitOrder($orderData);
+}
+
+
